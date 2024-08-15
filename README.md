@@ -8,7 +8,9 @@ For the initial draft, I implemented a simple load balancer, which at its core d
 1. Distribute traffic to service.
 
 Well, that is easy to prototype. Here's what I came up with
-```
+
+```python
+
 class LoadBalancer:
 ...
   def distribute_traffic(self, num_requests):
@@ -29,7 +31,8 @@ The `throw_traffic` simulates incoming traffic to any service. If the number of 
 
 This was a great step in the right direction. Next, was understanding how static load balancing works. Static means that the maximum and minimum compute requirements need to be known beforehand. There are many load balancing algorithm to distribute traffic we could've used here, I chose round robin and least connection. Here's how we distribute the traffic in a static load balancer:
 
-```
+```python
+
 class LoadBalancer:
 
 ...
@@ -62,7 +65,8 @@ Here's a short description of what both of those methods do:
 
 Finally, we move towards dynamic scaling. This is where we try to mimic real life setting. In dynamic case, the compute resouces are inferred at run-time, and the constraint we have is the "compute budget". Here's how the Autoscaler implements the `check_and_scale` function, which we call repeatedly and horizontally upscale or downscale the system.
 
-```
+```python
+
 class AutoScaler:
 
 ...
